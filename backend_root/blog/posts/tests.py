@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from django.test import TestCase
 
 from posts.models import Post
