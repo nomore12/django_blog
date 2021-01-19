@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from posts.views import PostListView, PostDetailView
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("post/", PostListView.as_view(), name="index"),
+    path("post/<int:pk>/", PostDetailView.as_view(), name="detail"),
 ]
