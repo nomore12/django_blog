@@ -17,11 +17,13 @@ class PostHttpTestCase(StaticLiveServerTestCase):
     """
 
     def setUp(self):
+        # browser.get()이 호출될때마다 실행
         driver_path = f"{Path().resolve()}/chromedriver"
         self.browser = webdriver.Chrome(driver_path)
         for post in range(5):
             Post.objects.create(title=f"{post}' post")
-        time.sleep(3)
+        time.sleep(1)
+        print(Post.objects.count())
 
     def tearDown(self):
         self.browser.quit()
@@ -50,6 +52,19 @@ class PostHttpTestCase(StaticLiveServerTestCase):
             created_at = self.browser.find_element_by_id("created_at")
             self.assertEqual(created_at, Post.objects.get(id=id).created_at)
 
-    def test_is_category_exists(self):
-        self.browser.get(f"{self.live_server_url}/post/")
-        category = self.browser.find_element_by_id("category")
+    def test_is_navbar_menu_exists_and_redirect_correct_url(self):
+        pass
+
+    def test_sidebar_is_exists(self):
+        pass
+
+    def test_is_category_exists_and_redirect_correct_url(self):
+        # self.browser.get(f"{self.live_server_url}/post/")
+        # category = self.browser.find_element_by_id("category")
+        pass
+
+    def test_tag_cloud_exists_and_redirect_correct_url(self):
+        pass
+
+    def test_footer_exists(self):
+        pass
