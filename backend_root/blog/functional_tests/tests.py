@@ -23,7 +23,6 @@ class PostHttpTestCase(StaticLiveServerTestCase):
         for post in range(5):
             Post.objects.create(title=f"{post}' post")
         time.sleep(1)
-        print(Post.objects.count())
 
     def tearDown(self):
         self.browser.quit()
@@ -53,9 +52,25 @@ class PostHttpTestCase(StaticLiveServerTestCase):
             self.assertEqual(created_at, Post.objects.get(id=id).created_at)
 
     def test_is_navbar_menu_exists_and_redirect_correct_url(self):
+        ## navbar id가 있는지 테스트
+        # navbar에 home, archives, tags, about이 있는지 테스트
+        # 아이템을 클릭하면 정확한 url로 이동하는지 테스트
         pass
 
     def test_sidebar_is_exists(self):
+        ## side_bar id를 갖고있는 요소가 있는지 테스트
+
+        # 자식 중에 프로필과 카테고리가 있는지 테스트
+
+        ## 프로필
+        # 프로필에 name, github_adress, post_cout, category_count, tag_count 요소가 있는지 테스트
+        pass
+
+        ## 카테고리
+        # categories가 있는지 테스트
+        # categories가 ul인지 테스트
+        # 프로필의 category_count와 categories 자식들의 child_category 수가 동일한지 테스트
+        # 카테고리를 클릭하면 페이지가 잘 이동하는지 테스트
         pass
 
     def test_is_category_exists_and_redirect_correct_url(self):
