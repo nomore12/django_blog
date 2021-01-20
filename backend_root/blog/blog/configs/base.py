@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # apps
     # app이름.apps.AppConfg로 표기하는게 더 명확. 각 앱의 apps.py에 클래스로 정의되어 있음.
     "posts.apps.PostsConfig",
 ]
@@ -109,5 +110,8 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = "/static/"
-STATIC_ROOT = f"{Path(BASE_DIR)}/static/"
+STATIC_URL = f"{BASE_DIR}/static/"
+STATIC_ROOT = f"{BASE_DIR.parent}/static/"
+STATICFILES_DIRS = [
+    f"{BASE_DIR}/static/",
+]

@@ -1,16 +1,15 @@
 {%extends "base.html" %} {% block content %}
-<h1 class="title">Post List</h1>
-<ol class="post_list">
+<ul class="post_list">
   {% for post in object_list %}
   <li>
     <a
       id="post_id_{{ post.pk }}"
-      class="post_title"
+      class="post_title has-text-weight-bold"
       href="{% url 'detail' post.pk %}"
     >
       {{ post.title }}
     </a>
   </li>
   {%endfor%}
-</ol>
+</ul>
 {%endblock%}
