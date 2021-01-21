@@ -9,22 +9,20 @@ class Post(models.Model):
 
     title = models.CharField(max_length=100, null=False)
     slug = models.SlugField(
-        allow_unicode=True, max_length=100, default="default"
+        "SLUG",
+        unique=True,
+        allow_unicode=True,
+        max_length=100,
+        default="default",
     )
     text = models.TextField(blank=False, default="default")
     tag = models.ManyToManyField("Tag", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def save(
-        self,
-        force_insert=False,
-        force_update=False,
-        using=None,
-        update_fields=False,
-    ):
+    def save(self, *args, **kwargs):
         self.slug = slugify(self.title, allow_unicode=True)
-        super().save(force_insert, force_update, using, update_fields)
+        super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.title}"

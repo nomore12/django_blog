@@ -3,5 +3,5 @@ from posts import views
 
 urlpatterns = [
     path("", views.PostListView, name="list"),
-    path("<int:pk>", views.PostDetailView, name="detail"),
+    path("<slug:slug>", views.PostDetailView, name="detail"),
 ]

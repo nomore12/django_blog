@@ -11,6 +11,13 @@ from posts.models import Post
 
 
 def PostListView(request):
+    import pprint
+
+    # pprint.pprint(dir(request))
+    # print("post view")
+    # print(f"path: {request.path}")
+    # print(f"urlconf: {request.urlconf()}")
+    # print(f"read: {request.read()}")
     if request.method != "GET":
         return handler404()
     return render(
@@ -20,8 +27,8 @@ def PostListView(request):
     )
 
 
-def PostDetailView(request, pk):
+def PostDetailView(request, slug):
     if request.method != "GET":
         return handler404()
-    post = Post.objects.get(pk=pk)
+    post = Post.objects.get(slug=slug)
     return render(request, "posts/post_detail.html", context={"object": post})
