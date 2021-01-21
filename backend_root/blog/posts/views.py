@@ -5,25 +5,21 @@ from django.conf.urls import handler404
 from posts.models import Post
 
 
-# class PostListView(ListView):
-#     model = Post
-#     template_name = "posts.post_list.html"
-
-
 def PostListView(request):
-    import pprint
-
-    # pprint.pprint(dir(request))
-    # print("post view")
-    # print(f"path: {request.path}")
-    # print(f"urlconf: {request.urlconf()}")
-    # print(f"read: {request.read()}")
     if request.method != "GET":
         return handler404()
+    context = sorted(
+        [
+            {"posts": post, "desc": post.text[0:300]}
+            for post in Post.objects.all()
+        ],
+        key=lambda e: e["posts"].pk,
+        reverse=True,
+    )
     return render(
         request,
         "posts/post_list.html",
-        context={"object_list": Post.objects.all()},
+        context={"context": context},
     )
 
 

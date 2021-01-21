@@ -1,4 +1,13 @@
 {%extends 'base.html'%} {%block content%}
-<h1>{{object.title}}</h1>
+
+<div class="title_area notification has-background-primary-dark">
+  <h1><strong>{{object.title}}</strong></h1>
+</div>
+
+<div
+  class="blog_content notification has-background-light has-text-grey-darker"
+>
+  <p>{{ object.text|linebreaksbr }}</p>
+</div>
 
 {%endblock%}

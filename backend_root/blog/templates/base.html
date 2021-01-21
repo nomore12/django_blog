@@ -4,24 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'bulma/css/bulma.css' %}"> 
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'bulma/css/bulma.css' %}"
+    />
     <title>{%block title%}My Blog{%endblock%}</title>
   </head>
-  <body>
+  <body class="has-background-grey">
     {% include 'navbar.html' %}
     <div class="container mt-5">
       <div class="tile ancenstor">
-        <div class="tile is-parent">
+        <div class="tile is-parent pb-0">
           <div class="tile is-parent is-vertical is-3 p-0">
             <div class="tile notification is-primary"></div>
-            <div class="tile notification is-primary"></div>
+            <div class="tile notification is-info"></div>
+            <div class="tile notification is-warning"></div>
           </div>
-          <div class="tile is-parent notification has-background-warning ml-5">{%block content%}{%endblock%}</div>
+          <div
+            class="tile is-parent notification has-background-warning ml-5 is-flex-direction-column"
+          >
+            {%block content%}{%endblock%}
+          </div>
         </div>
       </div>
-    <footer id="footer">
-        {%block footer%}{%endblock%}
-    </footer>  
-    
+    </div>
+
+    <footer id="footer" class="footer has-background-info">
+      <div class="content has-text-centered">
+        <p>
+          Ea dolore aliquip ipsum consequat exercitation laborum qui ex nostrud
+          adipisicing dolore excepteur.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

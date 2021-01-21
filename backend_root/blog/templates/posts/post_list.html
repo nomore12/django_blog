@@ -1,13 +1,10 @@
 {%extends "base.html" %} {% block content %}
-<ul class="post_list">
-  {% for post in object_list %}
-  <li>
-    <a
-      id="post_id_{{ post.pk }}"
-      class="post_title has-text-weight-bold"
-      href="{% url 'detail' post.pk %}"
-    >
-      {{ post.title }}
+<ul class="post_list my-0">
+  {% for post in context %}
+  <li class="box">
+    <a href="{% url 'detail' post.posts.slug %}">
+      <h1 class="title">{{ post.posts.title }}</h1>
+      <p>{{ post.desc|linebreaksbr }}</p>
     </a>
   </li>
   {%endfor%}
