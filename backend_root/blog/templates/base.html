@@ -8,23 +8,17 @@
     <title>{%block title%}My Blog{%endblock%}</title>
   </head>
   <body>
-
     {% include 'navbar.html' %}
     <div class="container mt-5">
-
       <div class="tile ancenstor">
         <div class="tile is-parent">
           <div class="tile is-parent is-vertical is-3 p-0">
             <div class="tile notification is-primary"></div>
             <div class="tile notification is-primary"></div>
-
           </div>
           <div class="tile is-parent notification has-background-warning ml-5">{%block content%}{%endblock%}</div>
         </div>
       </div>
-
-      
-
     <footer id="footer">
         {%block footer%}{%endblock%}
     </footer>  
